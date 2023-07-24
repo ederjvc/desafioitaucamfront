@@ -1,0 +1,61 @@
+<h1 class="mt-4">Entrada de Produtos</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Consulta</li>
+</ol>
+<div class="container">
+    <form #consultaForm="ngForm" (submit)="consultar()">
+        <div class="row">            
+            <div class="col-md-2">
+                <label for="inputNome">Mês:</label>
+                <select [(ngModel)]="mes" class="form-control" name="mes">
+                    <option value="">Selecione...</option>
+                    <option *ngFor="let mes of meses" [value]="mes">
+                        {{ mes }}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label for="inputNome">Nome Produto:</label>
+                    <input type="text" class="form-control"
+                        [(ngModel)]="nome"
+                        name="nome"
+                        id="inputNome">
+                </div>
+            </div>
+        </div>
+        <div class="row">            
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-search"></i> Consultar
+                </button>
+
+                <button class="btn btn-warning ml-1" (click)="novoCadastro()">
+                    <i class="fa fa-plus"></i>Novo
+                </button>
+            </div>
+        </div>
+        <br />
+    </form>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Data</th>
+                        <th>Quantidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let e of lista">
+                        <td>{{ e.produto.descricao }}</td>
+                        <td>{{ e.quantidade }}</td>
+                        <td>{{ e.dataEntrada }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
